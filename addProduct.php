@@ -7,48 +7,28 @@
 </head>
 
 <body>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    </form>
     <?php
         include 'DBConnect.php';
-        $groente = "groente";
-        $bami = array($groente);
-        $query = "SELECT * FROM producten";
-        echo "table style='border:1px solid black'>
-                tr>
-                        th>ID/th>
-                        th>Product/th>
-                        th>Addth>
-                /tr>";
+        $Name = $_GET["name"];
+        $TableName = "boodschappenlijst";
+        $query = "INSERT INTO " . $TableName . " VALUES(NULL, ?)";
         if(!$stmt = mysqli_prepare($conn, $query)) 
         {
             echo "Failed to prepare statement " , mysqli_error($conn);
         }
         else 
         {
+            mysqli_stmt_bind_param($stmt, 's', $Name);
             if(!mysqli_stmt_execute($stmt)) 
             {
-                echo "Failed to execute statement";
+                header("Location: selectProduct.php?R=2");
             }
             else 
             {
-                mysqli_stmt_bind_result($stmt, $ID, $productName);
-                mysqli_stmt_store_result($stmt);
-                while(mysqli_stmt_fetch($stmt)) 
-                {
-                    echo "tr>
-                    td>$ID/td>
-                    td>$gerechtName/td>
-                    /tr>";
-                }
+                header("Location: selectProduct.php?R=1");
             }
         }
-        echo "/table>";
 
-        function addProduct($ID)
-        {
-            
-        }
     ?>
 </body>
 
