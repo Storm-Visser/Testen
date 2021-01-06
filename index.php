@@ -5,11 +5,12 @@
         <title>Boodschappenlijstje</title>
         <link rel="stylesheet" href="style/style.css">
     </head>
-    <body id="background">
+    <body>
         <div id="menu">
-            
+            <p><a href="index.php">Mijn lijst</a></p>
+            <p><a href="addProduct.php">Product toevoegen</a></p>
         </div>
-        <div id="center">
+        <div id="content">
         <?php
             include 'DBConnect.php';
             $groente = "groente";

@@ -1,15 +1,56 @@
-#background
+body
 {
+    margin: 0;
     background-image: url(../img/Achtergrond.jpg);
+    background-size: no-repeat;
+    background-size: 150%;
 }
 
-
-.border
+p, tr, td, table, a
 {
-    border:1px solid black;
+    opacity: 100%;
+}
+
+p
+{
+    margin: 5px;
+}
+
+th
+{
+    text-align: left;
+    width: 25px;
+}
+
+a
+{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+#content
+{
+    float: left;
+    background-color: grey;
+    opacity: 90%;
+    width: 500px;
+    height: 97vh;
+    padding-top: 20px;
 }
 
 #menu
 {
-    Back
+    float: left;
+    background-color: grey;
+    opacity: 90%;
+    width: 300px;
+    height: 97vh;
+    padding-top: 20px;
+    margin-left: 500px;
+}
+
+.border
+{
+    border:1px solid black;
 }
