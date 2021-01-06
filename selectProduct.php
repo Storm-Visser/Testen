@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>add a product</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-
-<body>
+<?php include 'header.php' ?>   
     <div id="content">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         </form>

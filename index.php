@@ -8,7 +8,8 @@
     <body>
         <div id="menu">
             <p><a href="index.php">Mijn lijst</a></p>
-            <p><a href="addProduct.php">Product toevoegen</a></p>
+            <p><a href="selectProduct.php">Product toevoegen</a></p>
+            <p><a href="addNewProduct.php">addNewProduct</a></p>
         </div>
         <div id="content">
         <?php

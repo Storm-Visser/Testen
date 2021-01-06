@@ -28,8 +28,8 @@
                 header("Location: selectProduct.php?R=1");
             }
         }
-
     ?>
+    
 </body>
 
 </html>
