@@ -1,4 +1,15 @@
+#background
+{
+    background-image: url(../img/Achtergrond.jpg);
+}
+
+
 .border
 {
     border:1px solid black;
+}
+
+#menu
+{
+    Back
 }

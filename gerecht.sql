@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 jan 2021 om 10:16
+-- Gegenereerd op: 06 jan 2021 om 11:01
 -- Serverversie: 10.4.11-MariaDB
 -- PHP-versie: 7.4.5
 
@@ -60,20 +60,13 @@ INSERT INTO `gerecht` (`naam`, `product1`, `product2`, `product3`, `product4`, `
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `ingrediënten`
+-- Tabelstructuur voor tabel `producten`
 --
 
-CREATE TABLE `ingrediënten` (
-  `ID` int(8) NOT NULL,
-  `naam` varchar(69) NOT NULL
+CREATE TABLE `producten` (
+  `ID` int(11) NOT NULL,
+  `product` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `ingrediënten`
---
-
-INSERT INTO `ingrediënten` (`ID`, `naam`) VALUES
-(1, 'Mie');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -84,22 +77,6 @@ INSERT INTO `ingrediënten` (`ID`, `naam`) VALUES
 --
 ALTER TABLE `gerecht`
   ADD PRIMARY KEY (`naam`);
-
---
--- Indexen voor tabel `ingrediënten`
---
-ALTER TABLE `ingrediënten`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT voor geëxporteerde tabellen
---
-
---
--- AUTO_INCREMENT voor een tabel `ingrediënten`
---
-ALTER TABLE `ingrediënten`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

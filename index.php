@@ -5,7 +5,7 @@
         <title>Boodschappenlijstje</title>
         <link rel="stylesheet" href="style/style.css">
     </head>
-    <body>
+    <body id="background">
         <div id="menu">
             
         </div>
