@@ -11,7 +11,7 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $query = "SELECT ID, name FROM gerecht";
+            $query = "SELECT name FROM gerecht";
             echo "<table style='border:1px solid black'>
                     <tr>
                             <th>Gerecht</th>
@@ -29,13 +29,13 @@
                 }
                 else 
                 {
-                    mysqli_stmt_bind_result($stmt, $ID, $productName);
+                    mysqli_stmt_bind_result($stmt, $productName);
                     mysqli_stmt_store_result($stmt);
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
                         <td>$productName</td>
-                        <td><a href='addProduct.php?name=" . $ID . "'>Voeg toe</a></td>
+                        <td><a href='addGerecht.php?name=" . $productName . "'>Voeg toe</a></td>
                         </tr>";
                     }
                 }
