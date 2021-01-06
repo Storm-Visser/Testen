@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 jan 2021 om 10:12
+-- Gegenereerd op: 06 jan 2021 om 10:16
 -- Serverversie: 10.4.11-MariaDB
 -- PHP-versie: 7.4.5
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `gerecht`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `boodschappenlijst`
+--
+
+CREATE TABLE `boodschappenlijst` (
+  `ID` int(8) NOT NULL,
+  `product` varchar(69) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
