@@ -11,7 +11,7 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $query = "SELECT name FROM gerecht";
+            $query = "SELECT naam FROM gerecht";
             echo "<table style='border:1px solid black'>
                     <tr>
                             <th>Gerecht</th>

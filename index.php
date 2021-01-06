@@ -19,7 +19,6 @@
             $query = "SELECT * FROM boodschappenlijst";
             echo "<table class='border'>
                     <tr class='border'>
-                            <th>ID</th>
                             <th>Product</th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
@@ -39,7 +38,6 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                            <td>$ID</td>
                             <td>$gerechtName</td>
                         </tr>";
                     }
