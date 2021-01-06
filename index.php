@@ -44,7 +44,36 @@
                 }
             }
             echo "</table>";
-        ?>
+            
+            //Yannik's delete dingetje
+            ?>
+
+            <form method="post" action="index.php">
+                <p>Verwijder een product</p>
+                <select name="product">
+                    <?php
+                    $sqly = mysqli_query($conn, "SELECT product FROM boodschappenlijst");
+                    while ($row = mysqli_fetch_assoc($sqly))
+                    {
+                        ?>
+                        <option value="<?php echo $row["product"]; ?>"><?php echo $row['product']; ?></option>
+                        <?php } ?>
+                </select>
+                <input type="submit" name="delete" value="Verwijder product">
+            </form>
+            
+            <?php
+            include('DBConnect.php');
+            if (isset($_POST['delete']))
+            {
+                $product = $_POST['product'];
+                if (mysqli_query($conn, "DELETE FROM `boodschappenlijst` WHERE `product` = '$product' "))
+                {
+                    echo "<p> <font color=red> Product is verwijderd! </p>";
+                    echo "<meta http-equiv='refresh' content='.5'>";
+                }
+            }
+            ?>
         </div>
     </body>
 </html>
