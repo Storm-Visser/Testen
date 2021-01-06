@@ -5,11 +5,13 @@
         <title>Boodschappenlijstje</title>
         <link rel="stylesheet" href="style/style.css">
     </head>
-    <body id="background">
+    <body>
         <div id="menu">
-            
+            <p><a href="index.php">Mijn lijst</a></p>
+            <p><a href="selectProduct.php">Product toevoegen</a></p>
+            <p><a href="addNewProduct.php">addNewProduct</a></p>
         </div>
-        <div id="center">
+        <div id="content">
         <?php
             include 'DBConnect.php';
             $groente = "groente";
@@ -17,7 +19,6 @@
             $query = "SELECT * FROM boodschappenlijst";
             echo "<table class='border'>
                     <tr class='border'>
-                            <th>ID</th>
                             <th>Product</th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
@@ -37,7 +38,6 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                            <td>$ID</td>
                             <td>$gerechtName</td>
                         </tr>";
                     }

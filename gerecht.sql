@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 jan 2021 om 11:01
--- Serverversie: 10.4.11-MariaDB
--- PHP-versie: 7.4.5
+-- Generation Time: Jan 06, 2021 at 01:57 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `boodschappenlijst`
+-- Table structure for table `boodschappenlijst`
 --
 
 CREATE TABLE `boodschappenlijst` (
@@ -32,10 +33,27 @@ CREATE TABLE `boodschappenlijst` (
   `product` varchar(69) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `boodschappenlijst`
+--
+
+INSERT INTO `boodschappenlijst` (`ID`, `product`) VALUES
+(1, 'ei'),
+(2, 'boter'),
+(3, 'kaas'),
+(4, 'ei'),
+(5, 'ei'),
+(6, 'ei'),
+(7, 'ei'),
+(8, 'ei'),
+(9, 'boter'),
+(10, 'kaas'),
+(11, 'ketchup');
+
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gerecht`
+-- Table structure for table `gerecht`
 --
 
 CREATE TABLE `gerecht` (
@@ -51,7 +69,7 @@ CREATE TABLE `gerecht` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `gerecht`
+-- Dumping data for table `gerecht`
 --
 
 INSERT INTO `gerecht` (`naam`, `product1`, `product2`, `product3`, `product4`, `product5`, `product6`, `product7`, `product8`) VALUES
@@ -60,23 +78,61 @@ INSERT INTO `gerecht` (`naam`, `product1`, `product2`, `product3`, `product4`, `
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `producten`
+-- Table structure for table `producten`
 --
 
 CREATE TABLE `producten` (
   `ID` int(11) NOT NULL,
-  `product` int(11) NOT NULL
+  `product` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Dumping data for table `producten`
+--
+
+INSERT INTO `producten` (`ID`, `product`) VALUES
+(1, 'ei'),
+(2, 'boter'),
+(3, 'kaas'),
+(4, 'ketchup');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `gerecht`
+-- Indexes for table `boodschappenlijst`
+--
+ALTER TABLE `boodschappenlijst`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `gerecht`
 --
 ALTER TABLE `gerecht`
   ADD PRIMARY KEY (`naam`);
+
+--
+-- Indexes for table `producten`
+--
+ALTER TABLE `producten`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `boodschappenlijst`
+--
+ALTER TABLE `boodschappenlijst`
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `producten`
+--
+ALTER TABLE `producten`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
