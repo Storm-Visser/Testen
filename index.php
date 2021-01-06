@@ -3,16 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Boodschappenlijstje</title>
-        <link rel="stylesheet" href="style/stylecss">
+        <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
+        <div id="menu">
+            
+        </div>
+        <div id="center">
         <?php
             include 'DBConnect.php';
             $groente = "groente";
             $bami = array($groente);
-            $query = "SELECT * FROM ingrediënten";
-            echo "<table style='border:1px solid black'>
-                    <tr>
+            $query = "SELECT * FROM boodschappenlijst";
+            echo "<table class='border'>
+                    <tr class='border'>
                             <th>ID</th>
                             <th>Product</th>
                     </tr>";
@@ -41,5 +45,6 @@
             }
             echo "</table>";
         ?>
+        </div>
     </body>
 </html>
