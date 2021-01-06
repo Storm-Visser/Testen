@@ -9,8 +9,6 @@
 
 <body>
     <div id="content">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        </form>
         <?php
             include 'DBConnect.php';
             $groente = "groente";
