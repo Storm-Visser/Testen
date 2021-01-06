@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>report a bug</title>
+    <title>add a product</title>
 </head>
 
 <body>
@@ -13,15 +13,16 @@
         include 'DBConnect.php';
         $groente = "groente";
         $bami = array($groente);
-        $query = "SELECT * FROM ingrediënten";
-        echo "<table style='border:1px solid black'>
-                <tr>
-                        <th>ID</th>
-                        <th>Product</th>
-                </tr>";
+        $query = "SELECT * FROM producten";
+        echo "table style='border:1px solid black'>
+                tr>
+                        th>ID/th>
+                        th>Product/th>
+                        th>Addth>
+                /tr>";
         if(!$stmt = mysqli_prepare($conn, $query)) 
         {
-            echo "Failed to prepare statement";
+            echo "Failed to prepare statement " , mysqli_error($conn);
         }
         else 
         {
@@ -31,19 +32,18 @@
             }
             else 
             {
-                mysqli_stmt_bind_result($stmt, $ID, $gerechtName);
+                mysqli_stmt_bind_result($stmt, $ID, $productName);
                 mysqli_stmt_store_result($stmt);
                 while(mysqli_stmt_fetch($stmt)) 
                 {
-                    echo "<tr>
-                        <td>$ID</td>
-                        <td>$gerechtName</td>
-                        <td> <input type='button' onClick='addProduct($ID)' value='Klik hier'> <td>
-                        </tr>";
+                    echo "tr>
+                    td>$ID/td>
+                    td>$gerechtName/td>
+                    /tr>";
                 }
             }
         }
-        echo "</table>";
+        echo "/table>";
 
         function addProduct($ID)
         {
