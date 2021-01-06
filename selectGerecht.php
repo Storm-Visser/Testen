@@ -11,13 +11,11 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $groente = "groente";
-            $bami = array($groente);
-            $query = "SELECT * FROM producten";
+            $query = "SELECT ID, name FROM gerecht";
             echo "<table style='border:1px solid black'>
                     <tr>
-                            <th>Product</th>
-                            <th>Add<th>
+                            <th>Gerecht</th>
+                            <th>voeg toe<th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
             {
@@ -37,7 +35,7 @@
                     {
                         echo "<tr>
                         <td>$productName</td>
-                        <td><a href='addProduct.php?name=" . $productName . "'>Voeg toe</a></td>
+                        <td><a href='addProduct.php?name=" . $ID . "'>Voeg toe</a></td>
                         </tr>";
                     }
                 }
@@ -47,11 +45,11 @@
             {
                 if($_GET["R"] == 1)
                 {
-                    echo "<p>Product toegevoegd aan boodschappenlijstje</p>";
+                    echo "<p>Gerecht toegevoegd aan boodschappenlijstje</p>";
                 }
                 else
                 {
-                    echo "<p>er is iets fout gegaan met het toevoegen van het product</p>";
+                    echo "<p>er is iets fout gegaan met het toevoegen van het gerecht</p>";
                 }
             }
         ?>

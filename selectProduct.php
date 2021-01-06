@@ -11,13 +11,11 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $groente = "groente";
-            $bami = array($groente);
             $query = "SELECT * FROM producten";
             echo "<table style='border:1px solid black'>
                     <tr>
                             <th>Product</th>
-                            <th>Add<th>
+                            <th>voeg toe<th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
             {
