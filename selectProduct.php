@@ -18,7 +18,6 @@
             $query = "SELECT * FROM producten";
             echo "<table style='border:1px solid black'>
                     <tr>
-                            <th>ID</th>
                             <th>Product</th>
                             <th>Add<th>
                     </tr>";
@@ -39,7 +38,6 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                        <td>$ID</td>
                         <td>$productName</td>
                         <td><a href='addProduct.php?name=" . $productName . "'>Voeg toe</a></td>
                         </tr>";
@@ -51,7 +49,7 @@
             {
                 if($_GET["R"] == 1)
                 {
-                    echo "<p>Product toegevoegd aan boodachappenlijstje</p>";
+                    echo "<p>Product toegevoegd aan boodschappenlijstje</p>";
                 }
                 else
                 {
