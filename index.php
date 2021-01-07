@@ -45,7 +45,7 @@
             }
             echo "</table>";
             
-            //Yannik's delete dingetje
+            //Yannik's delete dingetje, hij haalt de rijen uit de db en laat het zien in de dropdown
             ?>
 
             <form method="post" action="index.php">
@@ -62,7 +62,14 @@
                 <input type="submit" name="delete" value="Verwijder product">
             </form>
             
+             <!--Dit is voor het compleet leeghalen van de lijst  -->
+             <br>
+            <form method="post" action="index.php">
+                <input type="submit" name="delall" value="Alles verwijderen" >
+            </form>
+            
             <?php
+            //Dit runt pas als de verwijder product knop is ingedrukt, en pakt automatisch de eerste db entry als product
             include('DBConnect.php');
             if (isset($_POST['delete']))
             {
@@ -70,6 +77,19 @@
                 if (mysqli_query($conn, "DELETE FROM `boodschappenlijst` WHERE `product` = '$product' "))
                 {
                     echo "<p> <font color=red> Product is verwijderd! </p>";
+                    echo "<meta http-equiv='refresh' content='.5'>";
+                }
+            }
+            ?>
+            
+            <?php
+            //Dit zou dut moeten werken, maar werkt niet. Het gaat over de verwijder alles knop
+            include('DBConnect.php');
+            if (isset($_POST['delall']))
+            {
+                if (mysqli_query($conn, "TRUNCATE TABLE boodschappenlijst"))
+                {
+                    echo "<p> <font color=red> Alle producten zijn verwijderd!</p>";
                     echo "<meta http-equiv='refresh' content='.5'>";
                 }
             }
