@@ -52,7 +52,8 @@
                 <p>Verwijder een product</p>
                 <select name="product">
                     <?php
-                    $sqly = mysqli_query($conn, "SELECT product FROM boodschappenlijst");
+                    $query1 = "SELECT product FROM boodschappenlijst";
+                    $sqly = mysqli_query($conn, $query1);
                     while ($row = mysqli_fetch_assoc($sqly))
                     {
                         ?>
@@ -69,28 +70,45 @@
             </form>
             
             <?php
-            //Dit runt pas als de verwijder product knop is ingedrukt, en pakt automatisch de eerste db entry als product
-            include('DBConnect.php');
             if (isset($_POST['delete']))
             {
                 $product = $_POST['product'];
-                if (mysqli_query($conn, "DELETE FROM `boodschappenlijst` WHERE `product` = '$product' "))
+                $query2 = "DELETE FROM `boodschappenlijst` WHERE `product` = '$product' ";
+                if (!$stmt = mysqli_prepare($conn, $query2))
                 {
-                    echo "<p> <font color=red> Product is verwijderd! </p>";
-                    echo "<meta http-equiv='refresh' content='.5'>";
+                    echo "failed to prepare statement";
+                }
+                else
+                {
+                    if(!mysqli_stmt_execute($stmt))
+                    {
+                        echo "failed to execute statement";
+                    }
+                    else
+                    {
+                        echo "<p> <font color=red> Product is verwijderd! </p>";
+                        echo "<meta http-equiv='refresh' content='1.0'>";
+                    }
                 }
             }
-            ?>
             
-            <?php
-            //Dit zou dut moeten werken, maar werkt niet. Het gaat over de verwijder alles knop
-            include('DBConnect.php');
-            if (isset($_POST['delall']))
+            if(isset($_POST['delAll']))
             {
-                if (mysqli_query($conn, "TRUNCATE TABLE boodschappenlijst"))
+                $query2 = "TRUNCATE TABLE boodschappenlijst";
+                if(!$stmt = mysqli_prepare($conn, $query))
                 {
-                    echo "<p> <font color=red> Alle producten zijn verwijderd!</p>";
-                    echo "<meta http-equiv='refresh' content='.5'>";
+                    echo "failed to prepare statement";
+                }
+                else
+                {
+                    if(!mysqli_stmt_execute($stmt))
+                    {
+                        echo "failed to execute statement";
+                    }
+                    else
+                    {
+                        echo "Het boodschappenlijstje is leeg";
+                    }
                 }
             }
             ?>
