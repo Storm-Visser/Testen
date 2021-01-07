@@ -1,15 +1,13 @@
-<?php include 'header.php' ?>   
+<?php include 'header.php' ?>
         <div id="content">
         <?php
             include 'DBConnect.php';
             $groente = "groente";
             $bami = array($groente);
-            // $query = "SELECT * FROM boodschappenlijst";
-            $query = "SELECT product, COUNT(*)FROM boodschappenlijst GROUP BY product HAVING COUNT(*) > 0";
+            $query = "SELECT * FROM boodschappenlijst GROUP BY product";
             echo "<table class='border'>
                     <tr class='border'>
                             <th>Product</th>
-                            <th>Hoeveelheid</th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
             {
@@ -23,28 +21,26 @@
                 }
                 else 
                 {
-                    mysqli_stmt_bind_result($stmt, $gerechtName, $count);
+                    mysqli_stmt_bind_result($stmt, $ID, $gerechtName);
                     mysqli_stmt_store_result($stmt);
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                                <td>$gerechtName</td>
-                                <td>$count</td>
-                            </tr>";
+                            <td>$gerechtName</td>
+                        </tr>";
                     }
                 }
             }
             echo "</table>";
             
-            //Yannik zijn delete code, hij haalt de rijen uit de db en laat het zien in de dropdown
+            //Yannik's delete dingetje, hij haalt de rijen uit de db en laat het zien in de dropdown
             ?>
 
             <form method="post" action="index.php">
                 <p>Verwijder een product</p>
                 <select name="product">
                     <?php
-                    $query1 = "SELECT product, COUNT(*)FROM boodschappenlijst GROUP BY product HAVING COUNT(*) > 0";
-                    $sqly = mysqli_query($conn, $query1);
+                    $sqly = mysqli_query($conn, "SELECT product FROM boodschappenlijst GROUP BY product");
                     while ($row = mysqli_fetch_assoc($sqly))
                     {
                         ?>
@@ -57,15 +53,15 @@
              <!--Dit is voor het compleet leeghalen van de lijst  -->
              <br>
             <form method="post" action="index.php">
-                <input type="submit" name="delall" value="Alles verwijderen" >
+                <input type="submit" name="delAll" value="Alles verwijderen" >
             </form>
             
             <?php
-            if (isset($_POST['delete']))
+            //Dit runt pas als de verwijder product knop is ingedrukt, en pakt automatisch de eerste db entry als product
+             if (isset($_POST['delete']))
             {
                 $product = $_POST['product'];
-                $query2 = "DELETE FROM `boodschappenlijst` 
-                WHERE `product` = '$product' AND `ID` = (SELECT MAX(ID) FROM boodschappenlijst) ";
+                $query2 = "DELETE FROM `boodschappenlijst` WHERE `product` = '$product'";
                 if (!$stmt = mysqli_prepare($conn, $query2))
                 {
                     echo "failed to prepare statement";
@@ -82,12 +78,15 @@
                         echo "<meta http-equiv='refresh' content='1.0'>";
                     }
                 }
-            }
+            } 
+            ?>
             
+            <?php
+            //Dit zou dut moeten werken, maar werkt niet. Het gaat over de verwijder alles knop
             if(isset($_POST['delAll']))
             {
                 $query2 = "TRUNCATE TABLE boodschappenlijst";
-                if(!$stmt = mysqli_prepare($conn, $query))
+                if(!$stmt = mysqli_prepare($conn, $query2))
                 {
                     echo "failed to prepare statement";
                 }
@@ -99,10 +98,11 @@
                     }
                     else
                     {
-                        echo "Het boodschappenlijstje is leeg";
+                        echo "Het boodschappenlijstje wordt geleegd";
+                        echo "<meta http-equiv='refresh' content='.5'>";
                     }
                 }
-            }
+            } 
             ?>
         </div>
     </body>
