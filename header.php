@@ -7,9 +7,14 @@
     </head>
     <body>    
         <div id="menu">
-            <p><a href="index.php">Mijn boodschappenlijst</a></p>
-            <p><a href="selectProduct.php"> Voeg product toe aan boodschappenlijst</a></p>
-            <p><a href="selectGerecht.php">Voeg gerecht toe aan boodschappenlijst</a></p>
-            <p><a href="addNewProduct.php">Maak nieuw product aan.</a></p>
-
+            <ul>
+                <li><a href="index.php" class="hover">Mijn boodschappenlijst</a></li>
+                <li><a href="selectGerecht.php" class="hover">Gerecht toevoegen</a></li>
+                <li><a href="selectProduct.php" class="hover">Product toevoegen</a></li>
+                <li><a href="addNewProduct.php" class="hover">Nieuw product aanmaken</a></li>
+            </ul>
+            
+            
+            
+            
         </div>

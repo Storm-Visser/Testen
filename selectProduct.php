@@ -2,7 +2,7 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $query = "SELECT * FROM producten";
+            $query = "SELECT * FROM producten ORDER BY product ASC";
             echo "<table style='border:1px solid black'>
                     <tr>
                             <th>Product</th>

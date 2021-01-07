@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>voeg een gerecht toe</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-
-<body>
+<?php include 'header.php' ?>  
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $query = "SELECT naam FROM gerecht";
+            $query = "SELECT naam FROM gerecht ORDER BY naam ASC";
             echo "<table style='border:1px solid black'>
                     <tr>
                             <th>Gerecht</th>
