@@ -11,7 +11,7 @@
         include 'DBConnect.php';
         $name = $_GET["name"];
         $tableName = "boodschappenlijst";
-        $query = "DELETE FROM $tableName WHERE `product` = '$name'";
+        $query = "DELETE FROM $tableName WHERE `product` = '$name' LIMIT 1";
         if(!$stmt = mysqli_prepare($conn, $query)) 
         {
             echo "Failed to prepare statement " , mysqli_error($conn);

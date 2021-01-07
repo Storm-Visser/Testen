@@ -7,7 +7,8 @@
             $query = "SELECT product, count(product) FROM boodschappenlijst GROUP BY product";
             echo "<table class='border'>
                     <tr class='border'>
-                            <th>Product</th>
+                        <th>Product</th>
+                        <th>Hoeveelheid</th>
                     </tr>";
             if(!$stmt = mysqli_prepare($conn, $query)) 
             {
@@ -26,9 +27,9 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                            <td>$gerechtName</td>
-                            <td>$count</td>
-                            <td><a href='deleteProduct.php?name=" . $gerechtName . "'>Verdwijder</a></td>
+                            <td class='left'>$gerechtName</td>
+                            <td class='right'>$count</td>
+                            <td class='right'><a href='deleteProduct.php?name=" . $gerechtName . "'>Verwijder</a></td>
                         </tr>";
                     }
                 }

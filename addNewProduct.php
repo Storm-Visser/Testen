@@ -6,30 +6,38 @@
             </form>
             <?php
             include 'DBConnect.php';
+            $product = filter_input(INPUT_POST, "product", FILTER_SANITIZE_SPECIAL_CHARS);
                 if(isset($_POST['submit'])) 
                 {
-                    $product = $_POST['product'];
-                    $sqlInsert = "INSERT INTO producten (product) VALUES (?);";
-                    if(!$stmt = mysqli_prepare($conn, $sqlInsert)) 
+                    if(empty($_POST['product']))
                     {
-                        echo "Failed to prepare statement";
-                        exit();
-                    } else {
-                        mysqli_stmt_bind_param($stmt, "s", $_POST['product']);
-                        if(!mysqli_stmt_execute($stmt)) 
-                        {
-                            echo "Failed to execute statement";
-                            exit();
-                        } 
-                        else 
-                        {
-                            mysqli_stmt_store_result($stmt);
-                            echo "Het product is toegevoegd!";
-                        }
+                        echo "Je voegt nu niks toe";
                     }
-                    mysqli_stmt_close($stmt);
-                    mysqli_close($conn);
-                    header("Location: selectProduct.php");
+                    else
+                    {
+                        $product = $_POST['product'];
+                        $sqlInsert = "INSERT INTO producten (product) VALUES (?);";
+                        if(!$stmt = mysqli_prepare($conn, $sqlInsert)) 
+                        {
+                            echo "Failed to prepare statement";
+                            exit();
+                        } else {
+                            mysqli_stmt_bind_param($stmt, "s", $_POST['product']);
+                            if(!mysqli_stmt_execute($stmt)) 
+                            {
+                                echo "Failed to execute statement";
+                                exit();
+                            } 
+                            else 
+                            {
+                                mysqli_stmt_store_result($stmt);
+                                echo "Het product is toegevoegd!";
+                            }
+                        }
+                        mysqli_stmt_close($stmt);
+                        mysqli_close($conn);
+                        header("Location: selectProduct.php");
+                    }
                 }
             ?>
         </div>

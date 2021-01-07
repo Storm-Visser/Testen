@@ -25,8 +25,8 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                        <td>$productName</td>
-                        <td><a href='addGerecht.php?name=" . $productName . "'>Voeg toe</a></td>
+                        <td class='left'>$productName</td>
+                        <td class='right'><a href='addGerecht.php?name=" . $productName . "'>Voeg toe</a></td>
                         </tr>";
                     }
                 }

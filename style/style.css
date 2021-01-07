@@ -11,10 +11,25 @@ p
     margin: 5px;
 }
 
-th, td
+th
 {
     text-align: left;
-    width: 100px;
+}
+
+.left
+{
+    text-align: left;
+    max-width: 200px;
+    min-width: 200px;
+    overflow-wrap: break-word;
+}
+
+.right
+{
+    text-align: left;
+    max-width: 100px;
+    min-width: 100px;
+    overflow-wrap: break-word;
 }
 
 a
@@ -23,6 +38,7 @@ a
     color: black;
     font-size: 20px;
 }
+
 
 #content
 {

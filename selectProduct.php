@@ -2,8 +2,8 @@
     <div id="content">
         <?php
             include 'DBConnect.php';
-            $query = "SELECT * FROM producten ORDER BY product ASC";
-            echo "<table style='border:1px solid black'>
+            $query = "SELECT * FROM producten GROUP BY product ORDER BY product ASC";
+            echo "<table class='border'>
                     <tr>
                             <th>Product</th>
                             <th>voeg toe<th>
@@ -25,8 +25,8 @@
                     while(mysqli_stmt_fetch($stmt)) 
                     {
                         echo "<tr>
-                        <td>$productName</td>
-                        <td><a href='addProduct.php?name=" . $productName . "'>Voeg toe</a></td>
+                        <td class='left'>$productName</td>
+                        <td class='right'><a href='addProduct.php?name=" . $productName . "'>Voeg toe</a></td>
                         </tr>";
                     }
                 }
